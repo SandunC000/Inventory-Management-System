@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    extend: {},
+export const content = ["./src/**/*.{js,jsx}"];
+export const mode = "jit";
+export const theme = {
+  extend: {
+    colors: {
+      primary: "#F5F5F5",
+      secondary: "#FFFFFF",
+      dimWhite: "#808080",
+    },
   },
-  plugins: [],
-}
-
+};
+export const plugins = [];
