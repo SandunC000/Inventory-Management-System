@@ -35,10 +35,12 @@ const Login = () => {
       return;
     }
 
+    const {isValidEmail , ...finalUser} = user;
+
     axios
-      .post("https://booking-sys-server-10ffb1575735.herokuapp.com/login", user)
+      .post("http://localhost:3000/login", finalUser)
       .then((result) => {
-        navigate("/home", { state: { user: result.data.data } });
+        navigate("/dashboard" , console.log(result));
       })
       .catch((err) => {
         if (err.response && err.response.status) {

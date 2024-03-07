@@ -17,14 +17,15 @@ const Signup = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-  
+
     // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     setNewUser((prevUser) => ({
       ...prevUser,
       [name]: value,
-      isValidEmail: name === "email" ? emailRegex.test(value) : prevUser.isValidEmail,
+      isValidEmail:
+        name === "email" ? emailRegex.test(value) : prevUser.isValidEmail,
     }));
   };
 
@@ -36,18 +37,10 @@ const Signup = () => {
       return;
     }
 
-    const { cpassword, ...finalUser } = newUser;
+    const { cpassword, isValidEmail, ...finalUser } = newUser;
 
     axios
-      .post(
-        "https://booking-sys-server-10ffb1575735.herokuapp.com/register",
-        finalUser,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .post("http://localhost:3000/register", finalUser)
       .then((result) => {
         console.log(result);
         alert("Registration Success");
@@ -62,8 +55,8 @@ const Signup = () => {
         <p className={`${styles.heading} mb-5 mt-10`}>Registration Form</p>
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <div className='flex flex-wrap -mx-3 mb-2'>
-            <div className='w-full md:w-1/2 px-3 mb-2'>
+          <div className="flex flex-wrap -mx-3 mb-2">
+            <div className="w-full md:w-1/2 px-3 mb-2">
               <label htmlFor="fName">
                 <strong>First Name</strong>
               </label>
@@ -77,7 +70,7 @@ const Signup = () => {
                 required
               ></input>
             </div>
-            <div className='w-full md:w-1/2 px-3 mb-2'>
+            <div className="w-full md:w-1/2 px-3 mb-2">
               <label htmlFor="lName">
                 <strong>Last Name</strong>
               </label>
@@ -117,7 +110,9 @@ const Signup = () => {
               placeholder="Enter Your Email..."
               autoComplete="off"
               name="email"
-              className={`${styles.formInput} ${newUser.isValidEmail === false ? 'border-red-500' : ''}`}
+              className={`${styles.formInput} ${
+                newUser.isValidEmail === false ? "border-red-500" : ""
+              }`}
               onChange={handleInputChange}
               required
             ></input>
@@ -170,7 +165,6 @@ const Signup = () => {
         >
           Already a member?
         </p>
-
 
         <div className="text-center">
           <Link

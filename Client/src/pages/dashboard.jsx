@@ -10,7 +10,7 @@ const Dashboard = () => {
         <h2 className={`${styles.subheading} max-w-[470px] md:pt-10 pt-5`}>
           Welcome to Inventory Management Tool
         </h2>
-        
+
       </div>
     </div>
   )
