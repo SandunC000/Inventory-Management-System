@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
-  "mongodb+srv://sanduncooray000:tJTmhIJkxt8ZdZ6X@cluster0.670yynr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://sanduncooray000:<Password>@cluster0.670yynr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const client = new MongoClient(uri, {
   serverApi: {
